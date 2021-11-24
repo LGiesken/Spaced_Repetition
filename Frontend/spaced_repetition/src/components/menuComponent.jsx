@@ -1,25 +1,46 @@
 import React, { Component } from "react";
 
+import MenuButton from "./menuButton";
+import MenuBar from "./menuBar";
 import "../index.css";
 
 class MenuComponent extends React.Component {
-  handleClick = () => {
-    console.log("Clicked");
+  state = {
+    showBar: false,
   };
 
+  handleButtonClick = () => {
+    console.log("Clicked", this.state.showBar);
+
+    if (this.state.showBar) {
+      this.setState({ showBar: false });
+    } else {
+      this.setState({ showBar: true });
+    }
+  };
+
+  handleBarClick = (text) => {
+    console.log("clicked!", text);
+  };
+
+  toggleBar = () => {};
+
   render() {
+    const showBar = this.state.showBar;
+    let menuBar;
+    if (showBar) {
+      menuBar = (
+        <MenuBar className="menuBar" barClicked={this.handleBarClick}></MenuBar>
+      );
+    } else {
+      menuBar = null;
+    }
     return (
-      <div onClick={this.handleClick()}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          className="bi bi-plus-circle menuComponent"
-          viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-        </svg>
+      <div className={"menuComponent"}>
+        {menuBar}
+        <MenuButton
+          className="menuButton"
+          handleButtonClick={this.handleButtonClick}></MenuButton>
       </div>
     );
   }
