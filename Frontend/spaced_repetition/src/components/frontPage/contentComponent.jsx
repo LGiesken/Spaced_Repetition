@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Navigate } from "react-router-dom";
 
 import { getTopics } from "../../services/fakeTopicService";
 import { getCounters } from "../../services/fakeCounterService";
@@ -7,7 +8,7 @@ import NameComponent from "./nameComponent";
 import CounterComponent from "./counterComponent";
 
 class ContentComponent extends React.Component {
-  state = { topics: [], counters: [] };
+  state = { topics: [], counters: [], clicked: false, id: "0" };
 
   componentDidMount() {
     const topics = getTopics();
@@ -16,9 +17,11 @@ class ContentComponent extends React.Component {
     this.setState({ topics, counters });
   }
 
-  handleClick(id) {
-    return null;
-  }
+  handleClick = (id) => {
+    let clicked = true;
+
+    this.setState({ clicked, id });
+  };
 
   getCounter(_id) {
     let counter = this.state.counters.find((counter) => counter._id === _id);
@@ -31,6 +34,12 @@ class ContentComponent extends React.Component {
     let topic = this.state.topics.find((topic) => topic._id === _id);
     return topic.name;
   }
+
+  navigateToQuestion = () => {
+    if (this.state.clicked === true) {
+    }
+    return null;
+  };
 
   getContentComponent(counter) {
     if (counter.counter === 0) {
@@ -56,8 +65,10 @@ class ContentComponent extends React.Component {
   }
 
   render() {
+    let path = "/question/" + this.state.id;
     return (
       <div className="contentContainer">
+        {this.state.clicked && <Navigate to={path} replace={true} />}
         {this.state.counters.map((counter) =>
           this.getContentComponent(counter)
         )}

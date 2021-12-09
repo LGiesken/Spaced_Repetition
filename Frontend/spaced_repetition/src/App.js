@@ -1,11 +1,17 @@
-import MenuComponent from "./components/frontPage/menuComponent";
-import ContentComponent from "./components/frontPage/contentComponent";
+import FrontPage from "./components/frontPage/frontPage";
+import QuestionPage from "./components/questionPage/questionPage";
+
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <ContentComponent />
-      <MenuComponent />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/question/:id" element={<QuestionPage />}></Route>
+          <Route path="/" element={<FrontPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
