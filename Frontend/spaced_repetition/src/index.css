@@ -1,4 +1,7 @@
-/* Designs are for small devices (320px) */
+/*  
+  Designs are for Galaxy S5 (360 * 640) 
+  Other designs are based on Chrome sugestions
+*/
 
 body {
   margin: 0;
@@ -14,18 +17,51 @@ code {
     monospace;
 }
 
-.frameComponent {
+.contentContainer {
+  overflow: auto;
+  height: 80vh;
+  width: 60%;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.contentComponent {
   border-style: solid;
   border-radius: 16px;
   border-color: black;
-  margin: 16px;
 
-  width: 50%;
+  margin: 16px;
+  width: 80%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .nameComponent {
   padding-left: 5%;
   margin: 16px;
+  width: 80%;
+
+  word-break: break-word;
+}
+
+.counterComponent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-style: solid;
+  border-radius: 50%;
+
+  width: 2.5rem;
+  height: 2rem;
+
+  margin: 5px;
 }
 
 .menuComponent {

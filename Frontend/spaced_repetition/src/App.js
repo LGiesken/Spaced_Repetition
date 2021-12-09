@@ -1,14 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import FrameComponent from './components/frameComponent';
-import MenuComponent from './components/menuComponent';
+import MenuComponent from "./components/frontPage/menuComponent";
+import ContentComponent from "./components/frontPage/contentComponent";
 
 function App() {
-  return ( <div>
-    <FrameComponent />
-    <MenuComponent />
+  return (
+    <div>
+      <ContentComponent />
+      <MenuComponent />
     </div>
-    
   );
 }
 
